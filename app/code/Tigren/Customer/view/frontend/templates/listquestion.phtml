@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @var \Tigren\Customer\Block\ListQuestion $block
+ */
+$product=$block->getQuestion();
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+?>
+<div class="table">
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Content</td>
+        </tr>
+        <?php foreach ($product as $products):?>
+            <tr>
+                <td><?=$products['entity_id']?></td>
+                <td><?=$products['title']?></td>
+                <td><?=$products['content']?></td>
+            </tr>
+        <?php endforeach;;?>
+    </table>
+
+</div>
+
+

@@ -1,0 +1,49 @@
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+.form-question{
+    display: flex;
+    flex-direction: column;
+
+}
+.item-form{
+    max-width: 500px;
+    margin-bottom: 30px;
+
+}
+.form-question form{
+    max-width: 500px;
+    border: 1px solid;
+    padding: 30px;
+    height: 100%;
+    border-radius: 10px;
+}
+.item-form label{
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+.button-confirm{
+    display: flex;
+    justify-content: center;
+    width:500px;
+}
+.button{
+
+    margin-top:10px;
+    background-color: #00ff00;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color:white;
+    font-weight: 500;
+    border-radius: 15px;
+    border: none;
+}
+.content{
+    resize: none;
+    height: 200px;
+}
