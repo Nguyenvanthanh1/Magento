@@ -95,6 +95,10 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
+        "amasty": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/community/"
+        },
         "swissup": {
             "type": "composer",
             "url": "https://docs.swissuplabs.com/packages/"
