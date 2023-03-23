@@ -1,0 +1,1 @@
+/home/vanthanh/Work/htdocs/magento/lib/web/jquery/ui-modules/vendor/jquery-color/jquery.color.js

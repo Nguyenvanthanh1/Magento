@@ -1,0 +1,1 @@
+/home/vanthanh/Work/htdocs/magento/vendor/magento/module-page-builder/view/base/web/js/events.js

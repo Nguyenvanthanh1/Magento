@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_Testimonial::listing" title="Tigren Question" sortOrder="999" module="Tigren_Testimonial" resource="Tigren_Testimonial::listing"/>
+        <add id="Tigren_Testimonial::index" title="List Question" module="Tigren_Testimonial" sortOrder="999" action="tigren_testimonial/question" resource="Tigren_Testimonial::index" parent="Tigren_Testimonial::listing"/>
+    </menu>
+</config>
