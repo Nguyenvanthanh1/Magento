@@ -27,7 +27,7 @@
             <updateUrl path="mui/index/render" />
         </settings>
         <aclResource>Tigren_Testimonial::listing</aclResource>
-        <dataProvider class="Tigren\Testimonial\Ui\Component\Listing\QuestionDataProvider" name="tigren_testimonial_question_grid_data_source">
+        <dataProvider class="TigrenTestimonialFilterPool" name="tigren_testimonial_question_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>question_id</primaryFieldName>
@@ -41,7 +41,54 @@
 <!--        <filters name="listing_filters" />-->
 <!--        <paging name="listing_paging" />-->
 <!--    </listingToolbar>-->
+<!--    <filters name="listing_filters">-->
+<!--        <argument name="data" xsi:type="array">-->
+<!--            <item name="config" xsi:type="array">-->
+<!--                <item name="storageConfig" xsi:type="array">-->
+<!--                    <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks</item>-->
+<!--                    <item name="namespace" xsi:type="string">curren.filters</item>-->
+<!--                </item>-->
+<!--                <item name="childDefaults" xsi:type="array">-->
+<!--                    <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.listing_filters</item>-->
+<!--                    <item name="imports" xsi:type="array">-->
+<!--                        <item name="visible" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks:current.columns.${ $.index }.visible</item>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </item>-->
+<!--        </argument>-->
+<!--    </filters>-->
+    <massaction name="listing_massaction">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <!-- we put here the path to the element pfay_contact_ids of contacts_test_columns  element -->
+                <item name="selectProvider" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.tigren_testimonial_question_grid_columns.ids</item>
+                <item name="displayArea" xsi:type="string">bottom</item>
+                <item name="indexField" xsi:type="string">question_id</item>
+            </item>
+        </argument>
+        <action name="delete">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">delete</item>
+                    <item name="label" xsi:type="string" translate="true">Delete</item>
+                    <item name="url" xsi:type="url" path="*/*/massDelete"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Delete all selected questions</item>
+                        <item name="message" xsi:type="string" translate="true">Do you want to delete all the selected questions?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+    </massaction>
     <columns name="tigren_testimonial_question_grid_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <!-- define which field will be used as ID -->
+                    <item name="indexField" xsi:type="string">question_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
         <column name="question_id">
             <settings>
                 <filter>textRange</filter>
@@ -78,6 +125,27 @@
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="profile_image" class="Tigren\Testimonial\Ui\Component\Listing\Columns\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="altField" xsi:type="string">name</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+        <column name="rating" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Rating</label>
             </settings>
         </column>
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="100">

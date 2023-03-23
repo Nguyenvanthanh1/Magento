@@ -25,6 +25,8 @@ class Index extends Action implements HttpGetActionInterface
 
     public function execute()
     {
-        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $result = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $result->getConfig()->getTitle()->prepend('Tigren Testimonial Listing');
+        return $result;
     }
 }

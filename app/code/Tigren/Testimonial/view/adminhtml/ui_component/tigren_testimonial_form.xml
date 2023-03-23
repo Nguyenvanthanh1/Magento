@@ -78,7 +78,7 @@
                     <item name="required" xsi:type="boolean">false</item>
                     <item name="sortOrder" xsi:type="number">40</item>
                     <item name="uploaderConfig" xsi:type="array">
-                        <item name="url" xsi:type="url" path="tigren_testimonial/image/upload"/>
+                        <item name="url" xsi:type="url" path="tigren_testimonial/image/upload" />
                     </item>
                 </item>
             </argument>
@@ -100,6 +100,7 @@
                 <label translate="true">Email</label>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+<!--                    <rule name="validate-email" xsi:type="boolean">true</rule>-->
                 </validation>
             </settings>
         </field>
@@ -113,6 +114,19 @@
                 </validation>
             </settings>
         </field>
+        <field name="rating" sortOrder="40" formElement="select">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Rating</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Tigren\Testimonial\Model\Config\Rating" />
+                    </settings>
+                </select>
+            </formElements>
+        </field>
         <field name="message">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -124,8 +138,5 @@
                 </item>
             </argument>
         </field>
-        <htmlContent name="rating">
-            <block name="rating" class="Tigren\Testimonial\Block\Form\Rating" template="Tigren_Testimonial::rating.phtml" />
-        </htmlContent>
     </fieldset>
 </form>
