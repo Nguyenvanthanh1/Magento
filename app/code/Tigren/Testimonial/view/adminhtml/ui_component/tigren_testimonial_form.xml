@@ -118,6 +118,9 @@
             <settings>
                 <dataType>int</dataType>
                 <label translate="true">Rating</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
             <formElements>
                 <select>

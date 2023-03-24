@@ -22,6 +22,6 @@ class QuestionDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     public function getData()
     {
-        return $this->getCollection();
+
     }
 }
