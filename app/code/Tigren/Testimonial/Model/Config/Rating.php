@@ -10,7 +10,6 @@ class Rating implements ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => 0, 'label' => __('Choose')],
             ['value' => 1, 'label' => __('1 Star')],
             ['value' => 2, 'label' => __('2 Star')],
             ['value' => 3, 'label' => __('3 Star')],

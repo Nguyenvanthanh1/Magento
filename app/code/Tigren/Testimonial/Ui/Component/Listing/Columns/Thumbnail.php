@@ -6,6 +6,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Tigren\Testimonial\Helper\Image;
 use Tigren\Testimonial\Model\Question;
+use Magento\Framework\UrlInterface;
 
 class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
 {
@@ -14,14 +15,18 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
     const ALT_FIELD = 'name';
     protected $helperImage;
 
+    protected $urlBuilder;
+
     public function __construct(
         Image $helperImage,
+        UrlInterface $urlBuilder,
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         array $components = [],
         array $data = []
     ) {
         $this->helperImage = $helperImage;
+        $this->urlBuilder = $urlBuilder;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -31,12 +36,15 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as &$item) {
                 /** @var Question $item */
                 $fieldName = $this->getName();
-                if(!empty($fieldName)){
+                if (!empty($fieldName)) {
                     $fileName = $item['profile_image'];
                     if (isset($fileName)) {
                         $item[$fieldName . '_src'] = $this->helperImage->getUrlImage($fileName);
                         $item[$fieldName . '_orig_src'] = $this->helperImage->getUrlImage($fileName);
                         $item[$fieldName . '_alt'] = $this->getAlt($item);
+                        $item[$fieldName . '_link'] = $this->urlBuilder->getUrl(
+                            'tigren_testimonial/question/edit',
+                            ['id' => $item['question_id']]);
                     }
                 }
             }

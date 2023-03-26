@@ -34,53 +34,62 @@
             </settings>
         </dataProvider>
     </dataSource>
-<!--    <listingToolbar name="listing_top">-->
-<!--        <bookmark name="bookmarks" />-->
-<!--        <columnsControls name="columns_controls" />-->
-<!--        <filterSearch name="fulltext" />-->
-<!--        <filters name="listing_filters" />-->
-<!--        <paging name="listing_paging" />-->
-<!--    </listingToolbar>-->
-<!--    <filters name="listing_filters">-->
-<!--        <argument name="data" xsi:type="array">-->
-<!--            <item name="config" xsi:type="array">-->
-<!--                <item name="storageConfig" xsi:type="array">-->
-<!--                    <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks</item>-->
-<!--                    <item name="namespace" xsi:type="string">curren.filters</item>-->
-<!--                </item>-->
-<!--                <item name="childDefaults" xsi:type="array">-->
-<!--                    <item name="provider" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.listing_filters</item>-->
-<!--                    <item name="imports" xsi:type="array">-->
-<!--                        <item name="visible" xsi:type="string">contacts_test_listing.contacts_test_listing.listing_top.bookmarks:current.columns.${ $.index }.visible</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </item>-->
-<!--        </argument>-->
-<!--    </filters>-->
-    <massaction name="listing_massaction">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <!-- we put here the path to the element pfay_contact_ids of contacts_test_columns  element -->
-                <item name="selectProvider" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.tigren_testimonial_question_grid_columns.ids</item>
-                <item name="displayArea" xsi:type="string">bottom</item>
-                <item name="indexField" xsi:type="string">question_id</item>
-            </item>
-        </argument>
-        <action name="delete">
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks" />
+        <columnsControls name="columns_controls" />
+        <filterSearch name="fulltext" />
+        <filters name="listing_filters" />
+        <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="type" xsi:type="string">delete</item>
-                    <item name="label" xsi:type="string" translate="true">Delete</item>
-                    <item name="url" xsi:type="url" path="*/*/massDelete"/>
-                    <item name="confirm" xsi:type="array">
-                        <item name="title" xsi:type="string" translate="true">Delete all selected questions</item>
-                        <item name="message" xsi:type="string" translate="true">Do you want to delete all the selected questions?</item>
-                    </item>
+                    <!-- we put here the path to the element pfay_contact_ids of contacts_test_columns  element -->
+                    <item name="selectProvider" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.tigren_testimonial_question_grid_columns.ids</item>
+                    <item name="displayArea" xsi:type="string">bottom</item>
+                    <item name="indexField" xsi:type="string">question_id</item>
                 </item>
             </argument>
-        </action>
-    </massaction>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/massDelete" />
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete all selected questions</item>
+                            <item name="message" xsi:type="string" translate="true">Do you want to delete all the selected questions?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <!--    <filters name="listing_filters">-->
+    <!--        <argument name="data" xsi:type="array">-->
+    <!--            <item name="config" xsi:type="array">-->
+    <!--                <item name="storageConfig" xsi:type="array">-->
+    <!--                    <item name="provider" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.listing_top.bookmarks</item>-->
+    <!--                    <item name="namespace" xsi:type="string">curren.filters</item>-->
+    <!--                </item>-->
+    <!--                <item name="childDefaults" xsi:type="array">-->
+    <!--                    <item name="provider" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.listing_top.listing_filters</item>-->
+    <!--                    <item name="imports" xsi:type="array">-->
+    <!--                        <item name="visible" xsi:type="string">tigren_testimonial_question_grid.tigren_testimonial_question_grid.listing_top.bookmarks:current.columns.${ $.index }.visible</item>-->
+    <!--                    </item>-->
+    <!--                </item>-->
+    <!--            </item>-->
+    <!--        </argument>-->
+    <!--    </filters>-->
     <columns name="tigren_testimonial_question_grid_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="resizeConfig" xsi:type="array">
+                    <item name="enabled" xsi:type="boolean">true</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/resize</item>
+                    <item name="rootSelector" xsi:type="string">${ $.columnsProvider }:.admin__data-grid-wrap</item>
+                    <item name="columnsProvider" xsi:type="string">${ $.name }</item>
+                </item>
+            </item>
+        </argument>
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -121,7 +130,7 @@
         </column>
         <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="90">
             <settings>
-                <options class="Magento\Catalog\Model\Product\Attribute\Source\Status"/>
+                <options class="Magento\Catalog\Model\Product\Attribute\Source\Status" />
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
@@ -135,7 +144,9 @@
                     <item name="altField" xsi:type="string">name</item>
                     <item name="has_preview" xsi:type="string">1</item>
                     <item name="label" xsi:type="string" translate="true">Image</item>
-                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                        <item name="resizeEnabled" xsi:type="boolean">false</item><!-- "true" allows admin user to change column width (default value); "false" - disallows admin user to change column width -->
+                        <item name="resizeDefaultWidth" xsi:type="number">100</item><!-- needed column width in pixels -->
                 </item>
             </argument>
         </column>
@@ -155,5 +166,14 @@
                 <label translate="true">Create At</label>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Tigren\Testimonial\Ui\Component\Listing\Columns\Actions" sortOrder="200">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
 </listing>

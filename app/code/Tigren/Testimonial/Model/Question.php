@@ -15,52 +15,52 @@ class Question extends AbstractModel implements QuestionInterface
 
     public function setName($name)
     {
-        $this->setData('name', $name);
+        return $this->setData('name', $name);
     }
 
     public function getName()
     {
-        $this->getData('name');
+        return $this->getData('name');
     }
 
     public function getCompany()
     {
-        $this->getData('company');
+        return $this->getData('company');
     }
 
     public function setCompany($company)
     {
-        $this->setData('company', $company);
+        return $this->setData('company', $company);
     }
 
     public function setProfileImage($profileImage)
     {
-        $this->setData('profile_image', $profileImage);
+        return $this->setData('profile_image', $profileImage);
     }
 
     public function getProfileImage()
     {
-        $this->getData('profile_image');
+        return $this->getData('profile_image');
     }
 
     public function setStatus($status)
     {
-        $this->setData('status', $status);
+        return $this->setData('status', $status);
     }
 
     public function getStatus()
     {
-        $this->getData('status');
+        return $this->getData('status');
     }
 
     public function getQuestionId()
     {
-        $this->getData('question_id');
+        return $this->getData('question_id');
     }
 
     public function setQuestionId($questionId)
     {
-        $this->setData('question_id', $questionId);
+        return $this->setData('question_id', $questionId);
     }
 
     /**
