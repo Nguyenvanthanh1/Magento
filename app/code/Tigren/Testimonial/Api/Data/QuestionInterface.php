@@ -16,7 +16,6 @@ const COMPANY = 'question_id';
 
 interface QuestionInterface
 {
-
     /**
      * @return int
      */
