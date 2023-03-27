@@ -1,7 +1,7 @@
 <?php
 /** @var $block Tigren\Testimonial\Block\Question */
 ?>
-<a href="<?=$block->getUrl('*/*/create')?>" class="btn primary stretched-link">
+<a href="<?= $block->getUrl('*/*/create') ?>" class="btn primary stretched-link">
     <button class="action primary">
         Create Question
     </button>
@@ -15,6 +15,7 @@
         <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
         <thead>
         <tr>
+            <th scope="col" class="col count"><?php echo __('STT') ?></th>
             <th scope="col" class="col id"><?php echo __('ID') ?></th>
             <th scope="col" class="col name"><?php echo __('Name') ?></th>
             <th scope="col" class="col email"><?php echo __('Email') ?></th>
@@ -26,27 +27,36 @@
         </thead>
         <tbody>
         <tr>
+            <?php foreach ($block->getDataQuestion() as $key => $item): ?>
+            <td data-th="<?= $block->escapeHtml(__('STT')) ?>" class="col count">
+                <?= $key + 1 ?>
+            </td>
             <td data-th="<?= $block->escapeHtml(__('ID')) ?>" class="col id">
-
+                <?= $item->getId() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
-
+                <?= $item->getName() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Email')) ?>" class="col email">
-
+                <?= $item->getEmail() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Rating')) ?>" class="col rating">
-
+                <?= $item->getRating() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Image')) ?>" class="col image">
-
+                <img style="width:50px;height: 50px"
+                     src="<?= $block->getBaseUrl() . 'media/profile/image/' . $item->getProfileImage() ?>"
+                     alt="profile_image" />
             </td>
             <td data-th="<?= $block->escapeHtml(__('Message')) ?>" class="col image">
-
+                <?= $item->getMessage() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Created At')) ?>"
-                class="col title"></td>
+                class="col title">
+                <?= $item->getCreatedAt() ?>
+            </td>
         </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>

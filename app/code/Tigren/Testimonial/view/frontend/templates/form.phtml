@@ -1,10 +1,18 @@
+<?php
+/** @var $block \Tigren\Testimonial\Block\Form */
+?>
+<a href="<?= $block->getUrl('*/*/') ?>">
+    <button title="<?php echo __('Back') ?>" class="action default" id="custom_btn">
+        <span><?php echo __('Back') ?></span>
+    </button>
+</a>
 <form class="form"
       action="<?php echo $this->getUrl('*/*/save', ['_secure' => true]); ?>"
       enctype="multipart/form-data"
       id="custom-form"
       method="post"
       data-hasrequired="<?php echo __('* Required Fields') ?>"
-
+      style="width:800px"
       data-mage-init='{"validation":{}}'>
 
     <fieldset class="fieldset">
@@ -36,41 +44,19 @@
             </div>
 
         </div>
+        <div class="field rating required">
 
-        <fieldset class="field required review-field-ratings">
+            <label class="label" for="rating"><span><?php echo __('Rating(star)') ?></span></label>
+
             <div class="control">
-                <div class="nested" id="product-review-table">
-                    <?php for($i = 1;$i <= 5;$i++): ?>
-                    <div class="field choice review-field-rating">
-                        <label class="label" id=""><span><?= $block->escapeHtml(__(' Rating')) ?></span></label>
-                        <div class="control review-control-vote">
-                            <?php $iterator = 1; for($i = 1;$i <= 5;$i++): ?>
-                                <input
-                                    type="radio"
-                                    name="ratings[]"
-                                    id="<?='rating'.'_'.$i?>"
-                                    value="<?=$i?>"
-                                    class="radio"
-                                    data-validate="{'rating-required':true}"
-                                    aria-labelledby="" />
-                                <label
-                                    class="rating-<?= $block->escapeHtmlAttr($iterator) ?>"
-                                    for="Rating_<?= $block->escapeHtmlAttr($iterator) ?>"
-                                    title="<?= $block->escapeHtmlAttr(__('%1 %2', $iterator,
-                                        $iterator > 1 ? __('stars') : __('star'))) ?>"
-                                    id="Rating_<?=$iterator?>_label">
-                                    <span><?= $block->escapeHtml(__('%1 %2', $iterator,
-                                            $iterator > 1 ? __('stars') : __('star'))) ?></span>
-                                </label>
-                                <?php $iterator++; ?>
-                            <?php endfor; ?>
-                        </div>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-                <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+
+                <input name="rating" id="rating" title="<?php echo __('Rating(star)') ?>"
+                       class="input-text validate-digits-range digits-range-1-5" type="text"
+                       data-validate="{required:true,'validate-number':true}" />
+                <i>Value is star from 1 to 5 star</i>
             </div>
-        </fieldset>
+
+        </div>
         <div class="field image">
 
             <label class="label" for="image"><span><?php echo __('Upload Image') ?></span></label>
@@ -97,17 +83,11 @@
     </fieldset>
 
     <div class="actions-toolbar">
-
         <div class="primary">
-
             <input type="hidden" name="hideit" id="hideit" value="" />
-
             <button type="submit" title="<?php echo __('Submit') ?>" class="action submit primary" id="custom_btn">
-
                 <span><?php echo __('Submit') ?></span>
-
             </button>
-
         </div>
 
     </div>
