@@ -3,31 +3,72 @@
 namespace Tigren\Testimonial\Api\Data;
 
 const QUESTION_ID = 'question_id';
+
 const NAME = 'name';
+
 const EMAIL = 'email';
+
 const PROFILE_IMAGE = 'profile_image';
+
 const STATUS = 'status';
+
 const COMPANY = 'question_id';
+
 interface QuestionInterface
 {
-    public function getQuestionId();
 
-    public function setQuestionId($questionId);
+    /**
+     * @return int
+     */
+    public function getQuestionId(): int;
 
-    public function setName($name);
+    /**
+     * @param $questionId
+     * @return int
+     */
+    public function setQuestionId($questionId): int;
 
-    public function getName();
+    /**
+     * @param $name
+     * @return string
+     */
+    public function setName($name): string;
 
-    public function getCompany();
+    /**
+     * @return string
+     */
+    public function getName(): string;
 
-    public function setCompany($company);
+    /**
+     * @return string
+     */
+    public function getCompany(): string;
 
-    public function setProfileImage($profileImage);
+    /**
+     * @param $company
+     * @return string
+     */
+    public function setCompany($company): string;
 
-    public function getProfileImage();
+    /**
+     * @param $profileImage
+     * @return string
+     */
+    public function setProfileImage($profileImage): string;
 
-    public function setStatus($status);
+    /**
+     * @return string
+     */
+    public function getProfileImage(): string;
 
-    public function getStatus();
+    /**
+     * @param $status
+     * @return int
+     */
+    public function setStatus($status): int;
 
+    /**
+     * @return int
+     */
+    public function getStatus(): int;
 }
