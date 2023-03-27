@@ -1,0 +1,52 @@
+<?php
+/** @var $block Tigren\Testimonial\Block\Question */
+?>
+<a href="<?=$block->getUrl('*/*/create')?>" class="btn primary stretched-link">
+    <button class="action primary">
+        Create Question
+    </button>
+</a>
+
+<div class="table-wrapper">
+    <h3>
+        <span class="label label-default">Table Testimonial Question</span>
+    </h3>
+    <table class="data table" id="my-question-table">
+        <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('ID') ?></th>
+            <th scope="col" class="col name"><?php echo __('Name') ?></th>
+            <th scope="col" class="col email"><?php echo __('Email') ?></th>
+            <th scope="col" class="col rating"><?php echo __('Rating') ?></th>
+            <th scope="col" class="col image"><?php echo __('Image') ?></th>
+            <th scope="col" class="col message"><?php echo __('Message') ?></th>
+            <th scope="col" class="col createat"><?php echo __('Created At') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td data-th="<?= $block->escapeHtml(__('ID')) ?>" class="col id">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Email')) ?>" class="col email">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Rating')) ?>" class="col rating">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Image')) ?>" class="col image">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Message')) ?>" class="col image">
+
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Created At')) ?>"
+                class="col title"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

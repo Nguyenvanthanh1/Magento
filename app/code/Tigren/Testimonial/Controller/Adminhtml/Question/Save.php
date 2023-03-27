@@ -8,7 +8,6 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\NotFoundException;
 use Tigren\Testimonial\Model\QuestionFactory;
 use Tigren\Testimonial\Model\ResourceModel\Question;
 
@@ -18,7 +17,9 @@ class Save extends Action implements HttpPostActionInterface
      * Authorization level of a basic admin session
      */
     public const ADMIN_RESOURCE = 'Tigren_Testimonial::manage';
+
     protected $questionFactory;
+
     protected $resourceQuestion;
 
     public function __construct(Context $context, QuestionFactory $questionFactory, Question $resourceQuestion)
@@ -32,7 +33,6 @@ class Save extends Action implements HttpPostActionInterface
      * Execute action based on request and return result
      *
      * @return ResultInterface|ResponseInterface
-     * @throws NotFoundException
      */
     public function execute()
     {

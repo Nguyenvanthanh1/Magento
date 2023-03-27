@@ -39,7 +39,7 @@ class Question extends AbstractModel implements QuestionInterface
         return $this->setData('profile_image', $profileImage);
     }
 
-    public function getProfileImage(): string
+    public function getProfileImage()
     {
         return $this->getData('profile_image');
     }
