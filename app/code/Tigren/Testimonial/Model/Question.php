@@ -3,7 +3,6 @@
 namespace Tigren\Testimonial\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Magento\Tests\NamingConvention\true\string;
 use Tigren\Testimonial\Api\Data\QuestionInterface;
 use Tigren\Testimonial\Model\ResourceModel\Question as ResourceModel;
 

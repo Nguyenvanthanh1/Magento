@@ -27,7 +27,7 @@
             <updateUrl path="mui/index/render" />
         </settings>
         <aclResource>Tigren_Testimonial::listing</aclResource>
-        <dataProvider class="TigrenTestimonialFilterPool" name="tigren_testimonial_question_grid_data_source">
+        <dataProvider class="TigrenTestimonialDataProvier" name="tigren_testimonial_question_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>question_id</primaryFieldName>

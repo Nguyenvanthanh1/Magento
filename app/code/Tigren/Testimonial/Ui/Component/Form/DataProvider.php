@@ -46,7 +46,7 @@ class DataProvider extends AbstractDataProvider
         foreach ($items as $item) {
             $itemData = $item->getData();
             $imageName = $itemData['profile_image'];
-            if(!empty($imageName)) {
+            if (!empty($imageName)) {
                 unset($itemData['profile_image']);
                 $itemData['profile_image'][0] = [
                     'name' => $imageName,
