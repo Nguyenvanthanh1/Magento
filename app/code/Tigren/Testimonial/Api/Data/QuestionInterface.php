@@ -17,57 +17,57 @@ const COMPANY = 'question_id';
 interface QuestionInterface
 {
     /**
-     * @return int
+     * @return mixed
      */
-    public function getQuestionId(): int;
+    public function getQuestionId();
 
     /**
      * @param $questionId
-     * @return int
+     * @return mixed
      */
-    public function setQuestionId($questionId): int;
+    public function setQuestionId($questionId);
 
     /**
      * @param $name
-     * @return string
+     * @return mixed
      */
-    public function setName($name): string;
+    public function setName($name);
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string;
+    public function getName();
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getCompany(): string;
+    public function getCompany();
 
     /**
      * @param $company
-     * @return string
+     * @return mixed
      */
-    public function setCompany($company): string;
+    public function setCompany($company);
 
     /**
      * @param $profileImage
-     * @return string
+     * @return mixed
      */
-    public function setProfileImage($profileImage): string;
+    public function setProfileImage($profileImage);
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getProfileImage(): string;
+    public function getProfileImage();
 
     /**
      * @param $status
-     * @return int
+     * @return mixed
      */
-    public function setStatus($status): int;
+    public function setStatus($status);
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getStatus(): int;
+    public function getStatus();
 }

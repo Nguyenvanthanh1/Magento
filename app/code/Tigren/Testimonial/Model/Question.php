@@ -3,6 +3,7 @@
 namespace Tigren\Testimonial\Model;
 
 use Magento\Framework\Model\AbstractModel;
+use Magento\Tests\NamingConvention\true\string;
 use Tigren\Testimonial\Api\Data\QuestionInterface;
 use Tigren\Testimonial\Model\ResourceModel\Question as ResourceModel;
 
@@ -38,7 +39,7 @@ class Question extends AbstractModel implements QuestionInterface
         return $this->setData('profile_image', $profileImage);
     }
 
-    public function getProfileImage()
+    public function getProfileImage(): string
     {
         return $this->getData('profile_image');
     }
