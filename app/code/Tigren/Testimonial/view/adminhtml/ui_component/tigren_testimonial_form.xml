@@ -75,7 +75,7 @@
                 <checkbox>
                     <settings>
                         <valueMap>
-                            <map name="false" xsi:type="string">0</map>
+                            <map name="false" xsi:type="string">2</map>
                             <map name="true" xsi:type="string">1</map>
                         </valueMap>
                         <prefer>toggle</prefer>

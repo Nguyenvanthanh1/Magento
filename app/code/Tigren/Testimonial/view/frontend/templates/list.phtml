@@ -19,6 +19,7 @@
             <th scope="col" class="col id"><?php echo __('ID') ?></th>
             <th scope="col" class="col name"><?php echo __('Name') ?></th>
             <th scope="col" class="col email"><?php echo __('Email') ?></th>
+            <th scope="col" class="col email"><?php echo __('Company') ?></th>
             <th scope="col" class="col rating"><?php echo __('Rating') ?></th>
             <th scope="col" class="col image"><?php echo __('Image') ?></th>
             <th scope="col" class="col message"><?php echo __('Message') ?></th>
@@ -28,6 +29,7 @@
         <tbody>
         <tr>
             <?php foreach ($block->getDataQuestion() as $key => $item): ?>
+            <?php /** @var  Tigren\Testimonial\Model\Question $item */ ?>
             <td data-th="<?= $block->escapeHtml(__('STT')) ?>" class="col count">
                 <?= $key + 1 ?>
             </td>
@@ -40,8 +42,19 @@
             <td data-th="<?= $block->escapeHtml(__('Email')) ?>" class="col email">
                 <?= $item->getEmail() ?>
             </td>
+            <td data-th="<?= $block->escapeHtml(__('Email')) ?>" class="col email">
+                <?= $item->getCompany() ?>
+            </td>
             <td data-th="<?= $block->escapeHtml(__('Rating')) ?>" class="col rating">
-                <?= $item->getRating() ?>
+                <?php $start = '';
+                for ($i = 1;
+                     $i <= (int)$item->getRating();
+                     $i++): ?>
+                    <?php
+                    $start = $start . '<span class="" style="color:#E3CC24">&#10030;</span>'
+                    ?>
+                <?php endfor; ?>
+                <?= $start ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Image')) ?>" class="col image">
                 <img style="width:50px;height: 50px"

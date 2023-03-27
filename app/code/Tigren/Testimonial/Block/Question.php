@@ -18,7 +18,8 @@ class Question extends Template
     public function getDataQuestion()
     {
         $data = $this->questionCollection->create();
-
+        $data->addFieldToFilter('status', 1);
+        $data->getItems();
         return $data;
     }
 }

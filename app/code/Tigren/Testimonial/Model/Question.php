@@ -63,6 +63,16 @@ class Question extends AbstractModel implements QuestionInterface
         return $this->setData('question_id', $questionId);
     }
 
+    public function getRating()
+    {
+        return $this->getData('rating');
+    }
+
+    public function setRating($rating)
+    {
+        return $this->setData('rating', $rating);
+    }
+
     /**
      * Initialize magento model.
      *

@@ -60,6 +60,10 @@ interface QuestionInterface
      */
     public function getProfileImage();
 
+    public function getRating();
+
+    public function setRating($rating);
+
     /**
      * @param $status
      * @return mixed
