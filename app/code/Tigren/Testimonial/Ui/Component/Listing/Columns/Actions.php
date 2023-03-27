@@ -29,6 +29,12 @@ class Actions extends \Magento\Ui\Component\Listing\Columns\Column
                     'hidden' => false,
 
                 ];
+                $item[$this->getData('name')]['delete'] = [
+                    'href' => $this->context->getUrl('tigren_testimonial/question/delete',
+                        ['id' => $item['question_id'], 'store' => $storeId]),
+                    'label' => __('Delete'),
+                    'hidden' => false,]
+                ;
             }
         }
         return $dataSource;

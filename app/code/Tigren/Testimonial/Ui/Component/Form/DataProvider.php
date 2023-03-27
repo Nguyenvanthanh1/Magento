@@ -46,11 +46,13 @@ class DataProvider extends AbstractDataProvider
         foreach ($items as $item) {
             $itemData = $item->getData();
             $imageName = $itemData['profile_image'];
-            unset($itemData['profile_image']);
-            $itemData['profile_image'][0] = [
-                'name' => $imageName,
-                'url' => $this->helperImage->getUrlImage($imageName)
-            ];
+            if(!empty($imageName)) {
+                unset($itemData['profile_image']);
+                $itemData['profile_image'][0] = [
+                    'name' => $imageName,
+                    'url' => $this->helperImage->getUrlImage($imageName)
+                ];
+            }
             /** @var \Tigren\Testimonial\Model\Question $item */
             $this->loadedData[$item->getId()] = $itemData;
         }

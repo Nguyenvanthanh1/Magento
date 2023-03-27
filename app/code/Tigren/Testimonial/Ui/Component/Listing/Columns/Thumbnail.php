@@ -38,7 +38,7 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
                 $fieldName = $this->getName();
                 if (!empty($fieldName)) {
                     $fileName = $item['profile_image'];
-                    if (isset($fileName)) {
+                    if (!empty($fileName)) {
                         $item[$fieldName . '_src'] = $this->helperImage->getUrlImage($fileName);
                         $item[$fieldName . '_orig_src'] = $this->helperImage->getUrlImage($fileName);
                         $item[$fieldName . '_alt'] = $this->getAlt($item);

@@ -36,22 +36,26 @@ class Save extends Action implements HttpPostActionInterface
      */
     public function execute()
     {
-        $data = $this->getRequest()->getParam('general');
-        $dataImage = array_key_exists('image', $data) ? $data['image']  : '';
+        $data = $this->getRequest()->getParams();
+        $dataImage = array_key_exists('profile_image', $data) ? $data['profile_image'] : '';
 
         if (!empty($data)) {
             $questionModel = $this->questionFactory->create();
+            if (isset($data['question_id']) && !empty($data['question_id'])) {
+                $questionModel->load($data['question_id']);
+            }
             $questionModel->setData($data);
             if ($dataImage) {
                 $questionModel->setProfileImage($dataImage[0]['file']);
             }
             try {
                 $this->resourceQuestion->save($questionModel);
+                $this->messageManager->addSuccessMessage(__('The question saved'));
             } catch (Exception $e) {
                 $this->messageManager->addErrorMessage(__('Save question failed'));
-                $this->resultRedirectFactory->create()->setUrl('*/*/create');
+                $this->resultRedirectFactory->create()->setPath('*/*/create');
             }
         }
-        return $this->resultRedirectFactory->create()->setUrl('*/*/');
+        return $this->resultRedirectFactory->create()->setPath('*/*/');
     }
 }
