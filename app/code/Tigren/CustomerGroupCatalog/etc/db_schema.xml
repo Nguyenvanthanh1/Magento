@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tigren_customer_group_catalog_rule" resource="default" engine="innodb" comment="Tigren Customer Group Catalog Rule Table">
+        <column xsi:type="int" name="rule_id" unsigned="true" nullable="false" identity="true"
+                comment="Rule ID" />
+        <column xsi:type="varchar" name="name" nullable="false" length="200" comment="Name" />
+        <column xsi:type="text" name="discount_amount" nullable="true" comment="Discount Amount" />
+        <column xsi:type="int" name="priority" nullable="true" comment="Priority" />
+        <column xsi:type="int" name="Store" nullable="true" comment="Store" />
+        <column xsi:type="text" name="profile_image" nullable="true" comment="Profile Image" />
+        <column xsi:type="boolean" name="active" nullable="false" comment="Active" />
+        <column xsi:type="timestamp" name="start_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Start Rule" />
+        <column xsi:type="timestamp" name="end_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="End Rule" />
+        <column xsi:type="timestamp" name="create_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At Of Rule" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id" />
+        </constraint>
+
+    </table>
+</schema>
