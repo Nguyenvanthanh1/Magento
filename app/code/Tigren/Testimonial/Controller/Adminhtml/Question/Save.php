@@ -11,17 +11,27 @@ use Magento\Framework\Controller\ResultInterface;
 use Tigren\Testimonial\Model\QuestionFactory;
 use Tigren\Testimonial\Model\ResourceModel\Question;
 
+/**
+ * Class Save
+ * @package Tigren\Testimonial\Controller\Adminhtml\Question
+ */
 class Save extends Action implements HttpPostActionInterface
 {
     /**
-     * Authorization level of a basic admin session
+     * @var QuestionFactory
      */
-    public const ADMIN_RESOURCE = 'Tigren_Testimonial::manage';
-
     protected $questionFactory;
 
+    /**
+     * @var Question
+     */
     protected $resourceQuestion;
 
+    /**
+     * @param Context $context
+     * @param QuestionFactory $questionFactory
+     * @param Question $resourceQuestion
+     */
     public function __construct(Context $context, QuestionFactory $questionFactory, Question $resourceQuestion)
     {
         $this->questionFactory = $questionFactory;
@@ -32,7 +42,7 @@ class Save extends Action implements HttpPostActionInterface
     /**
      * Execute action based on request and return result
      *
-     * @return ResultInterface|ResponseInterface
+     * @return ResultInterface
      */
     public function execute()
     {

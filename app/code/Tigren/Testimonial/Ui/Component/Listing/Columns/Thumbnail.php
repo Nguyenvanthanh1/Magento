@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Ui\Component\Listing\Columns;
 
@@ -8,15 +13,33 @@ use Tigren\Testimonial\Helper\Image;
 use Tigren\Testimonial\Model\Question;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class Thumbnail
+ * @package Tigren\Testimonial\Ui\Component\Listing\Columns
+ */
 class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
     const NAME = 'image';
     const ALT_FIELD = 'name';
+    /**
+     * @var Image
+     */
     protected $helperImage;
 
+    /**
+     * @var UrlInterface
+     */
     protected $urlBuilder;
 
+    /**
+     * @param Image $helperImage
+     * @param UrlInterface $urlBuilder
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param array $components
+     * @param array $data
+     */
     public function __construct(
         Image $helperImage,
         UrlInterface $urlBuilder,
@@ -30,6 +53,10 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
+    /**
+     * @param array $dataSource
+     * @return array
+     */
     public function prepareDataSource(array $dataSource)
     {
         if (!empty($dataSource) && isset($dataSource['data']['items'])) {
@@ -52,6 +79,10 @@ class Thumbnail extends \Magento\Ui\Component\Listing\Columns\Column
         return $dataSource;
     }
 
+    /**
+     * @param $row
+     * @return null
+     */
     protected function getAlt($row)
     {
         $altField = $this->getData('config/altField') ?: self::ALT_FIELD;

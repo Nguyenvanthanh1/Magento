@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Setup\Patch\Data;
 
@@ -8,29 +13,54 @@ use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Customer\Setup\CustomerSetupFactory;
 
+/**
+ * Class CustomerAttribute
+ * @package Tigren\Testimonial\Setup\Patch\Data
+ */
 class CustomerAttribute implements DataPatchInterface
 {
 
+    /**
+     * @var EavSetupFactory
+     */
     protected $eavSetupFactory;
 
+    /**
+     * @var ModuleDataSetupInterface
+     */
     protected $moduleDataSetupInterface;
 
+    /**
+     * @param EavSetupFactory $eavSetupFactory
+     * @param ModuleDataSetupInterface $moduleDataSetupInterface
+     */
     public function __construct(EavSetupFactory $eavSetupFactory, ModuleDataSetupInterface $moduleDataSetupInterface)
     {
         $this->moduleDataSetupInterface = $moduleDataSetupInterface;
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
+    /**
+     * @return array|string[]
+     */
     public static function getDependencies()
     {
         return [];
     }
 
+    /**
+     * @return array|string[]
+     */
     public function getAliases()
     {
         return [];
     }
 
+    /**
+     * @return CustomerAttribute|void
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Validator\ValidateException
+     */
     public function apply()
     {
         /** @var EavSetup $eavSetup */

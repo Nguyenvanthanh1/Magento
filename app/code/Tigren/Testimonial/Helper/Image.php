@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Helper;
 
@@ -23,17 +28,26 @@ class Image extends AbstractHelper
      */
     protected $DIR = 'profile/image';
 
+    /**
+     * @var UploaderFactory
+     */
     protected $uploader;
 
+    /**
+     * @var Filesystem
+     */
     protected $fileSystem;
 
+    /**
+     * @var WriteInterface
+     */
     protected $mediaDirectory;
 
     /**
      * @param Context $context
-     * @param WriteInterface $mediaDirectory
      * @param UploaderFactory $uploader
      * @param Filesystem $filesystem
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function __construct(
         Context $context,
@@ -73,17 +87,11 @@ class Image extends AbstractHelper
         }
     }
 
+    /**
+     * @return string[]
+     */
     public function getAllowExtensions(): array
     {
         return ['jpg', 'jpeg', 'png', 'gif'];
     }
-
-    public function getFileName($path, $filename)
-    {
-        $path = $path !== null ? rtrim($path, '/') : '';
-        $filename = $filename !== null ? ltrim($filename, '/') : '';
-
-        return $path . DIRECTORY_SEPARATOR . $filename;
-    }
-
 }

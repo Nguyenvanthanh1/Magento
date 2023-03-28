@@ -1,22 +1,42 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Controller\Adminhtml\Question;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Tigren\Testimonial\Model\QuestionFactory;
 
+/**
+ * Class Delete
+ * @package Tigren\Testimonial\Controller\Adminhtml\Question
+ */
 class Delete extends Action implements HttpGetActionInterface
 {
+    /**
+     * @var QuestionFactory
+     */
     protected $questionFactory;
 
+    /**
+     * @param Context $context
+     * @param QuestionFactory $questionFactory
+     */
     public function __construct(Context $context, QuestionFactory $questionFactory)
     {
         $this->questionFactory = $questionFactory;
         parent::__construct($context);
     }
 
+    /**
+     * @return Redirect
+     */
     public function execute()
     {
         $questionId = $this->getRequest()->getParam('id');

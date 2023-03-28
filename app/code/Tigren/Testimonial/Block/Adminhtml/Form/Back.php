@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Block\Adminhtml\Form;
 
@@ -6,15 +11,28 @@ namespace Tigren\Testimonial\Block\Adminhtml\Form;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Framework\View\Element\UiComponent\Context;
 
+/**
+ * Class Back
+ * @package Tigren\Testimonial\Block\Adminhtml\Form
+ */
 class Back implements ButtonProviderInterface
 {
+    /**
+     * @var Context
+     */
     protected $context;
 
+    /**
+     * @param Context $context
+     */
     public function __construct(Context $context)
     {
         $this->context = $context;
     }
 
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         return [
@@ -25,6 +43,9 @@ class Back implements ButtonProviderInterface
         ];
     }
 
+    /**
+     * @return string
+     */
     public function getBackUrl(): string
     {
         return $this->context->getUrl('*/*/');

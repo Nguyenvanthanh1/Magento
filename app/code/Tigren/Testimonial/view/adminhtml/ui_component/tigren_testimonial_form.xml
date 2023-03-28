@@ -18,17 +18,6 @@
             <button name="back" class="Tigren\Testimonial\Block\Adminhtml\Form\Back" />
         </buttons>
     </settings>
-<!--    <dataSource name="tigren_testimonial_form_data_source" component="Magento_Ui/js/form/provider">-->
-<!--        <settings>-->
-<!--            <submitUrl path="tigren_testimonial/question/save" />-->
-<!--        </settings>-->
-<!--        <dataProvider class="Tigren\Testimonial\Ui\Component\Form\DataProvider" name="tigren_testimonial_form_data_source">-->
-<!--            <settings>-->
-<!--                <requestFieldName>id</requestFieldName>-->
-<!--                <primaryFieldName>question_id</primaryFieldName>-->
-<!--            </settings>-->
-<!--        </dataProvider>-->
-<!--    </dataSource>-->
     <dataSource name="ui_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Tigren\Testimonial\Ui\Component\Form\DataProvider</argument>

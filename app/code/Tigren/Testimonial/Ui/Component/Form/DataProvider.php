@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\Testimonial\Ui\Component\Form;
 
@@ -14,10 +19,25 @@ use Tigren\Testimonial\Model\ResourceModel\Question\CollectionFactory;
 class DataProvider extends AbstractDataProvider
 {
 
+    /**
+     * @var
+     */
     protected $loadedData;
 
+    /**
+     * @var Image
+     */
     protected $helperImage;
 
+    /**
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param CollectionFactory $questionFactory
+     * @param Image $helperImage
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         $name,
         $primaryFieldName,
