@@ -12,8 +12,8 @@
 ?>
 <?php $_element = $block->getElement() ?>
 <?php $_jsObjectName = $block->getFieldSetId() != null ? $block->getFieldSetId() : $_element->getHtmlId() ?>
-<div class="rule-tree admin__field-control _with-tooltip  amgroupcat-condition-wrapper">
-    <fieldset id="<?= $block->escapeHtml($_jsObjectName) ?>" <?= $block->escapeHtml($_element->serialize(['class'])) ?> class="fieldset amgroupcat-fieldset">
+<div class="rule-tree admin__field-control _with-tooltip  groupcat-condition-wrapper">
+    <fieldset id="<?= $block->escapeHtml($_jsObjectName) ?>" <?= $block->escapeHtml($_element->serialize(['class'])) ?> class="fieldset groupcat-fieldset">
         <?php if ($_element->getComment()): ?>
             <div class="messages">
                 <div class="message message-notice"><?= $block->escapeHtml($_element->getComment()) ?></div>
@@ -27,7 +27,7 @@
 
 <script>
     require([
-        'Amasty_Groupcat/js/rules',
+        'Magento_Rule/rules',
         'prototype'
     ], function (VarienRulesForm) {
         window.<?= /* @escapeNotVerified */ $_jsObjectName ?> = new VarienRulesForm('<?= /* @escapeNotVerified */ $_jsObjectName ?>', '<?= /* @escapeNotVerified */ $block->getNewChildUrl() ?>');

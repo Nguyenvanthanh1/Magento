@@ -9,5 +9,5 @@ namespace Tigren\CustomerGroupCatalog\Controller;
 
 class RegistryConstants
 {
-    public const GROUPCAT_RULE_ID = 'current_tigren_groupcat_rule';
+    public const CURRENT_CATA_RULE = 'current_tigren_groupcat_rule';
 }

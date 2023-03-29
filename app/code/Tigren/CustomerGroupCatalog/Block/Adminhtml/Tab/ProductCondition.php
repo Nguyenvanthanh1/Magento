@@ -127,7 +127,7 @@ class ProductCondition extends \Magento\Backend\Block\Widget\Form\Generic implem
     {
         $formName = 'customer_catalog_form';
         /** @var \Tigren\CustomerGroupCatalog\Model\Rule $model */
-        $model = $this->_coreRegistry->registry(RegistryConstants::GROUPCAT_RULE_ID);
+        $model = $this->_coreRegistry->registry(RegistryConstants::CURRENT_CATA_RULE);
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
         $form->setHtmlIdPrefix('rule_');
@@ -150,7 +150,7 @@ class ProductCondition extends \Magento\Backend\Block\Widget\Form\Generic implem
             'conditions',
             'text',
             [
-                'name'     => 'conditions',
+                'name'     => 'product_conditions',
                 'label'    => __('Product Conditions'),
                 'title'    => __('Product Conditions'),
                 'required' => true,
@@ -161,7 +161,7 @@ class ProductCondition extends \Magento\Backend\Block\Widget\Form\Generic implem
             ->setRenderer($this->conditions);
 
         $form->setValues($model->getData());
-        $this->setConditionFormName($model->getConditions(), $formName, $model->getConditionsFieldSetId($formName));
+        $this->setConditionFormName($model->getConditions(), $formName);
         $this->setForm($form);
         return parent::_prepareForm();
     }

@@ -1,0 +1,39 @@
+{
+    "tigren_customer_group_catalog_rule": {
+        "column": {
+            "rule_id": true,
+            "name": true,
+            "priority": true,
+            "conditions_serialized": true,
+            "active": true,
+            "start_time": true,
+            "end_time": true,
+            "discount_amount": true,
+            "use_range_date": true,
+            "create_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "tigren_customer_group_catalog_rule_store": {
+        "column": {
+            "rule_id": true,
+            "store_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "tigren_customer_group_catalog_rule_group": {
+        "column": {
+            "rule_id": true,
+            "customer_group_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_D0E89B56B74474896F01A08A35BD5986": true,
+            "FK_508127A98A2273AC8734F175AE3C3609": true
+        }
+    }
+}

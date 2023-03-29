@@ -25,5 +25,8 @@
 !/README.md
 !/.github
 !/.github/*
-pub/media/*
+/pub/media/*
+/pub/static/*
+/generated/code/*
+/var
 .DS_Store

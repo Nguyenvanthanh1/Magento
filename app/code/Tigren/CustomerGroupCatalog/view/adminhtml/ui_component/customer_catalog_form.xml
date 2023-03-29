@@ -107,7 +107,7 @@
         <field name="customer_group_ids" formElement="multiselect">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">sales_rule</item>
+                    <item name="source" xsi:type="string">catalog</item>
                 </item>
             </argument>
             <settings>
@@ -126,7 +126,7 @@
                 </multiselect>
             </formElements>
         </field>
-        <field name="store">
+        <field name="store_ids">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
                 <item name="config" xsi:type="array">
@@ -145,10 +145,19 @@
     <fieldset name="product_conditions" >
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Products</item>
+                <item name="label" xsi:type="string" translate="true">Products Conditions</item>
                 <item name="sortOrder" xsi:type="number">60</item>
             </item>
         </argument>
+        <settings>
+            <label translate="true">Settings</label>
+            <additionalClasses>
+                <class name="product_condition">true</class>
+            </additionalClasses>
+            <imports>
+                <link name="visible">${ $.provider }:data.hide-export</link>
+            </imports>
+        </settings>
         <container name="actions_apply_to">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
@@ -161,7 +170,7 @@
             </htmlContent>
         </container>
     </fieldset>
-        <field name="used_range" sortOrder="200" formElement="checkbox">
+        <field name="use_range_date" sortOrder="200" formElement="checkbox">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="source" xsi:type="string">catalog</item>
