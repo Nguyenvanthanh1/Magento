@@ -96,12 +96,18 @@
             <settings>
                 <dataType>string</dataType>
                 <label translate="true">Name</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
         </field>
         <field name="priority" sortOrder="30" formElement="input">
             <settings>
                 <dataType>number</dataType>
                 <label translate="true">Priority</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
         </field>
         <field name="customer_group_ids" formElement="multiselect">
@@ -121,7 +127,7 @@
             <formElements>
                 <multiselect>
                     <settings>
-                        <options class="Magento\Customer\Model\Customer\Source\GroupSourceInterface"/>
+                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider"/>
                     </settings>
                 </multiselect>
             </formElements>
@@ -134,7 +140,7 @@
                     <item name="label" xsi:type="string" translate="true">Store View</item>
                     <item name="formElement" xsi:type="string">multiselect</item>
                     <item name="source" xsi:type="string">page</item>
-                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="dataScope" xsi:type="string">store_ids</item>
                     <item name="default" xsi:type="string">0</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
@@ -264,6 +270,9 @@
             <settings>
                 <dataType>number</dataType>
                 <label translate="true">Discount Amount</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
             </settings>
         </field>
     </fieldset>

@@ -22,7 +22,9 @@
             "store_id": true
         },
         "constraint": {
-            "PRIMARY": true
+            "PRIMARY": true,
+            "FK_244773695553018DC36AADA3E59AC5B3": true,
+            "TIGREN_CUSTOMER_GROUP_CATALOG_RULE_STORE_STORE_ID_STORE_STORE_ID": true
         }
     },
     "tigren_customer_group_catalog_rule_group": {

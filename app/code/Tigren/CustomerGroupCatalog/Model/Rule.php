@@ -14,9 +14,10 @@ use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Rule\Model\AbstractModel;
+use Tigren\CustomerGroupCatalog\Api\Data\RuleInterface;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule as ResourceModel;
 
-class Rule extends AbstractModel
+class Rule extends AbstractModel implements RuleInterface
 {
     protected $condCombineFactory;
 
@@ -59,6 +60,75 @@ class Rule extends AbstractModel
     public function getActionsInstance()
     {
         return $this->condProdCombineF->create();
+    }
+    public function setRuleId($ruleId)
+    {
+        return $this->setData('rule_id', $ruleId);
+    }
+
+    public function getRuleId()
+    {
+        return $this->getData('rule_id');
+    }
+
+    public function setName($name)
+    {
+        return $this->setData('name', $name);
+    }
+
+    public function getName()
+    {
+        return $this->getData('name');
+    }
+
+    public function setActive($active)
+    {
+        return $this->setData('active', $active);
+    }
+
+    public function getActive()
+    {
+        return $this->getData('active');
+    }
+
+    public function getPriority()
+    {
+        return $this->getData('priority');
+    }
+
+    public function setPriority($priority)
+    {
+        return $this->setData('priority', $priority);
+    }
+
+    public function setStartTime($startTime)
+    {
+        return $this->setData('start_time', $startTime);
+    }
+
+    public function getStartTime()
+    {
+        return $this->getData('start_time');
+    }
+
+    public function setEndTime($endTime)
+    {
+        return $this->setData('end_time', $endTime);
+    }
+
+    public function getEndTime()
+    {
+        return $this->getData('end_time');
+    }
+
+    public function setUseRangeDate($useRangeDate)
+    {
+        return $this->getData('use_range_date', $useRangeDate);
+    }
+
+    public function getUseRangeDate()
+    {
+        return $this->getData('use_range_date');
     }
 
     /**
