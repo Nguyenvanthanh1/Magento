@@ -2,7 +2,7 @@
 
 namespace Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule as ResourceModel;
 use Tigren\CustomerGroupCatalog\Model\Rule as Model;
 
@@ -13,6 +13,7 @@ class Collection extends AbstractCollection
      */
     protected $_eventPrefix = 'tigren_customer_group_catalog_rule_collection';
 
+    protected $_idFieldName= "rule_id";
     /**
      * Initialize collection model.
      */

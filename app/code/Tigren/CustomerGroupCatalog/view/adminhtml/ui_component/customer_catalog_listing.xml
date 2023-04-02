@@ -21,7 +21,9 @@
         <settings>
             <storageConfig>
                 <param name="dataScope" xsi:type="string">filters.store_id</param>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
             </storageConfig>
+
             <updateUrl path="mui/index/render" />
         </settings>
         <dataProvider class="TigrenCustomerDataProiver" name="customer_catalog_listing_data_source">
@@ -90,6 +92,13 @@
                 <label translate="true">Discount Amount(%)</label>
             </settings>
         </column>
+        <column name="store_id" class="Tigren\CustomerGroupCatalog\Ui\Component\Listing\Column\Store" sortOrder="50">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
         <column name="priority" sortOrder="70">
             <settings>
                 <filter>text</filter>
@@ -117,10 +126,10 @@
                 <label translate="true">End Time</label>
             </settings>
         </column>
-<!--        <actionsColumn name="actions" sortOrder="200">-->
-<!--            <settings>-->
-<!--                <indexField>rule_id</indexField>-->
-<!--            </settings>-->
-<!--        </actionsColumn>-->
+        <actionsColumn name="actions" sortOrder="200" class="Tigren\CustomerGroupCatalog\Ui\Component\Listing\Actions">
+            <settings>
+                <indexField>rule_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

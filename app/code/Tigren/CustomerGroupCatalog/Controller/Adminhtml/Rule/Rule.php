@@ -5,6 +5,7 @@ namespace Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
+use Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface;
 use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
@@ -19,14 +20,18 @@ abstract class Rule extends Action
 
     protected $dateFilter;
 
+    protected $ruleRepository;
+
     public function __construct(
         RuleFactory $ruleFactory,
         Registry $coreRegistry,
+        RuleRepositoryInterface $ruleRepository,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter,
         Context $context
     ) {
         $this->ruleFactory = $ruleFactory;
+        $this->ruleRepository = $ruleRepository;
         $this->fileFactory = $fileFactory;
         $this->dateFilter = $dateFilter;
         $this->coreRegistry = $coreRegistry;
@@ -51,6 +56,12 @@ abstract class Rule extends Action
     public function _initAction()
     {
         $this->_view->loadLayout();
+        $this->_setActiveMenu(
+            'Tigren_CustomerGroupCatalog::listing'
+        )->_addBreadcrumb(
+            __('Promotions'),
+            __('Promotions')
+        );
         return $this;
     }
 }

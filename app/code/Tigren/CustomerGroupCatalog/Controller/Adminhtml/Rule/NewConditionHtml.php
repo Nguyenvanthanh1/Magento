@@ -2,11 +2,13 @@
 
 namespace Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule;
 
+use Magento\Backend\App\Action\Context;
 use Magento\CatalogRule\Model\Rule\Condition\CombineFactory;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Registry;
 use Magento\Rule\Model\Condition\AbstractCondition;
 use Magento\Rule\Model\Condition\ConditionInterface;
+use Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
 class NewConditionHtml extends \Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule\Rule implements HttpPostActionInterface
@@ -14,11 +16,12 @@ class NewConditionHtml extends \Tigren\CustomerGroupCatalog\Controller\Adminhtml
     public function __construct(
         RuleFactory $ruleFactory,
         Registry $coreRegistry,
+        RuleRepositoryInterface $ruleRepository,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter,
-        \Magento\Backend\App\Action\Context $context
+        Context $context
     ) {
-        parent::__construct($ruleFactory, $coreRegistry, $fileFactory, $dateFilter, $context);
+        parent::__construct($ruleFactory, $coreRegistry, $ruleRepository, $fileFactory, $dateFilter, $context);
     }
 
     public function execute()

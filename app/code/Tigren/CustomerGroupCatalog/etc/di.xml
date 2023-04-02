@@ -27,4 +27,12 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Tigren\CustomerGroupCatalog\Api\Data\RuleInterface" type="Tigren\CustomerGroupCatalog\Model\Rule" />
+    <preference for="Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface" type="Tigren\CustomerGroupCatalog\Model\RuleRepository" />
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HidePrice"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HideAddToCart"/>
+    </type>
 </config>

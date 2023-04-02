@@ -44,7 +44,7 @@
         <settings>
             <submitUrl path="*/*/save"/>
         </settings>
-        <dataProvider class="Tigren\CustomerGroupCatalog\Ui\DataProvider\Rule\Form\DataProvider" name="customer_catalog_form_data_source">
+        <dataProvider class="Tigren\CustomerGroupCatalog\Model\Rule\DataProvider" name="customer_catalog_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>rule_id</primaryFieldName>
@@ -164,7 +164,7 @@
                 <link name="visible">${ $.provider }:data.hide-export</link>
             </imports>
         </settings>
-        <container name="actions_apply_to">
+        <container name="conditions_apply_to">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string">false</item>
@@ -172,7 +172,7 @@
             </item>
         </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Tigren\CustomerGroupCatalog\Block\Adminhtml\Tab\ProductCondition</argument>
+                <block class="Tigren\CustomerGroupCatalog\Block\Adminhtml\Tab\ProductCondition" name="conditions_apply_to"/>
             </htmlContent>
         </container>
     </fieldset>
@@ -268,10 +268,11 @@
         </field>
         <field name="discount_amount" sortOrder="30" formElement="input">
             <settings>
-                <dataType>number</dataType>
+                <dataType>text</dataType>
                 <label translate="true">Discount Amount</label>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number-range" xsi:type="string">0.00-100.00</rule>
                 </validation>
             </settings>
         </field>

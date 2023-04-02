@@ -2,6 +2,7 @@
 
 namespace Tigren\CustomerGroupCatalog\Model\ResourceModel;
 
+use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Rule extends AbstractDb
@@ -11,9 +12,38 @@ class Rule extends AbstractDb
      */
     protected $_eventPrefix = 'tigren_customer_group_catalog_rule_resource_model';
 
-    protected function _afterSave(\Magento\Framework\Model\AbstractModel $object)
+    public function getStoreByRuleId($ruleId)
     {
-        $object->getId();
+        $result = $this->getConnection()->select()->from(['main_table' => $this->getMainTable()])->join(['st' => $this->getTable($this->getMainTable() . '_store')],
+            'main_table.rule_id=st.rule_id')->where('st.rule_id=?', $ruleId);
+        return $this->filterData($this->getConnection()->fetchAll($result));
+
+    }
+
+    public function filterData($data)
+    {
+        $datas = [];
+        foreach ($data as $item) {
+            if (array_key_exists('store_id', $item)) {
+                $datas[] = $item['store_id'];
+            }
+            if (array_key_exists('customer_group_id', $item)) {
+                $datas[] = $item['customer_group_id'];
+            }
+        }
+        return $datas;
+    }
+
+    public function getCustomerGroupByRuleId($ruleId)
+    {
+        $result = $this->getConnection()->select()->from(['main_table' => $this->getMainTable()])->join(['cg' => $this->getTable($this->getMainTable() . '_group')],
+            'main_table.rule_id=cg.rule_id')->where('cg.rule_id=?', $ruleId);
+        return $this->filterData($this->getConnection()->fetchAll($result));
+
+    }
+
+    protected function _afterSave(AbstractModel $object)
+    {
         $this->addGroupData($object);
         $this->addStoreData($object);
         return parent::_afterSave($object);
@@ -36,10 +66,10 @@ class Rule extends AbstractDb
         $_prefixStore = '_store';
         $tableStore = $this->getMainTable() . $_prefixStore;
         if (isset($object['store_ids']) && is_array($object['store_ids'])) {
-        foreach ($object['store_ids'] as $storeId) {
-            $this->getConnection()->insert($tableStore, ['store_id' => $storeId, 'rule_id' => $object->getId()]);
+            foreach ($object['store_ids'] as $storeId) {
+                $this->getConnection()->insert($tableStore, ['store_id' => $storeId, 'rule_id' => $object->getId()]);
+            }
         }
-    }
     }
 
     /**
