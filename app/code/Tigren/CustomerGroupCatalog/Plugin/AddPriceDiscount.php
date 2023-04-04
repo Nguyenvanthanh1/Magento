@@ -8,7 +8,6 @@
 namespace Tigren\CustomerGroupCatalog\Plugin;
 
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Pricing\Price\FinalPrice;
 
 class AddPriceDiscount
 {
@@ -22,19 +21,9 @@ class AddPriceDiscount
         array $arguments = []
     ) {
 
-        $priceRender = $subject->getLayout()->getBlock('product.price.render.default');
-        if (!$priceRender) {
-            $priceRender = $subject->getLayout()->createBlock(
-                \Magento\Framework\Pricing\Render::class,
-                'product.price.render.default',
-                ['data' => ['price_render_handle' => 'catalog_product_prices_discount']]
-            );
-        }
-        $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/custom.log');
-        $logger = new \Zend_Log();
-        $logger->addWriter($writer);
-        $logger->info(print_r(''), true);
-        return $result;
+        $priceCustomRender = $subject->getLayout()->getBlock('product.price.render.custom');
+        $price = $priceCustomRender->render('final_price', $product, $arguments);
+        return $result . $price;
 
     }
 }
