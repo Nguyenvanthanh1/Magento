@@ -35,4 +35,7 @@
     <type name="Magento\Catalog\Model\Product">
         <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HideAddToCart"/>
     </type>
+     <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="add_price_discount" type="Tigren\CustomerGroupCatalog\Plugin\AddPriceDiscount"/>
+    </type>
 </config>

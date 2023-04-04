@@ -33,17 +33,32 @@ class AddToCart implements ObserverInterface
         /** @var  \Magento\Catalog\Model\Product $product */
         $rules = $this->ruleCollection->create();
         $rules->addFieldToFilter('active', 1);
-        foreach ($rules as $rule) {
-            /** @var \Tigren\CustomerGroupCatalog\Model\Rule $rule */
-            $validate = $rule->getConditions()->validate($product);
-            if ($validate) {
-                $discount = $rule->getDiscountAmount();
-                $finalPrice = (int)$quote->getProduct()->getFinalPrice();
-                $priceDiscount = $finalPrice - ($finalPrice / 100 * (int)$discount);
-                $quote->setCustomPrice($priceDiscount);
-                $quote->setOriginalCustomPrice($priceDiscount);
-                $quote->getProduct()->setIsSuperMode(true);
+        $totalValidate = 0;
+        $priority = [];
+        $discountRulePriority = 0;
+        try {
+            foreach ($rules as $rule) {
+                /* @var \Tigren\CustomerGroupCatalog\Model\Rule $rule */
+                $validate = $rule->getConditions()->validate($product);
+                if ($validate === true) {
+                    $priority[] = $rule->getPriority();
+                    $totalValidate++;
+                }
+                if ($validate && $totalValidate === 1) {
+                    $discountRulePriority = $rule->getDiscountAmount();
+                }
+                if ($totalValidate > 1 && !empty($priority) && count($priority) > 1) {
+                    $rule = $rules->addFieldToFilter('priority', min($priority))->getFirstItem();
+                    $discountRulePriority = $rule->getDiscountAmount();
+                }
             }
+            $finalPrice = (int)$quote->getProduct()->getFinalPrice();
+            $priceDiscount = $finalPrice - ($finalPrice / 100 * (int)$discountRulePriority);
+            $quote->setCustomPrice($priceDiscount);
+            $quote->setOriginalCustomPrice($priceDiscount);
+            $quote->getProduct()->setIsSuperMode(true);
+        } catch (\Exception $e) {
+            return ;
         }
     }
 }

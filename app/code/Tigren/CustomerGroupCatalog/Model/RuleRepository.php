@@ -52,7 +52,7 @@ class RuleRepository implements RuleRepositoryInterface
     public function save(RuleInterface $rule)
     {
         if ($rule->getRuleId()) {
-            $rule = $this->get($rule->getRuleId()->addData($rule->getData()));
+            $rule = $this->get($rule->getRuleId())->addData($rule->getData());
         }
         try {
             $this->ruleResource->save($rule);

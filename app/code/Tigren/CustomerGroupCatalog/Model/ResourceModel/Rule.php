@@ -53,10 +53,23 @@ class Rule extends AbstractDb
     {
         $_prefixGroup = '_group';
         $tableGroup = $this->getMainTable() . $_prefixGroup;
-        if (isset($object['customer_group_ids']) && is_array($object['customer_group_ids'])) {
-            foreach ($object['customer_group_ids'] as $groupId) {
-                $this->getConnection()->insert($tableGroup,
-                    ['customer_group_id' => $groupId, 'rule_id' => $object->getId()]);
+        $selectGroup = $this->getConnection()->select()->from($tableGroup)->where('rule_id=?', $object->getRuleId());
+        $checkRule = $this->getConnection()->fetchAll($selectGroup);
+        if (!empty($checkRule)) {
+            foreach ($checkRule as $rule) {
+                if (isset($object['customer_group_ids']) && is_array($object['customer_group_ids'])) {
+                    foreach ($object['customer_group_ids'] as $groupId) {
+                        if ($rule['customer_group_id'] === $groupId) {
+                            $this->getConnection()->insertOnDuplicate($tableGroup,
+                                ['customer_group_id' => $groupId, 'rule_id' => $object->getId()]);
+                        }
+                        if ($rule['rule_id'] === $object['rule_id'] && $rule['customer_group_id'] !== $groupId) {
+                            $this->getConnection()->delete($tableGroup, ['customer_group_id' => $rule['customer_group_id']]);
+                        }
+                            $this->getConnection()->insertOnDuplicate($tableGroup,
+                                ['customer_group_id' => $groupId, 'rule_id' => $object->getId()]);
+                    }
+                }
             }
         }
     }
@@ -65,9 +78,24 @@ class Rule extends AbstractDb
     {
         $_prefixStore = '_store';
         $tableStore = $this->getMainTable() . $_prefixStore;
-        if (isset($object['store_ids']) && is_array($object['store_ids'])) {
-            foreach ($object['store_ids'] as $storeId) {
-                $this->getConnection()->insert($tableStore, ['store_id' => $storeId, 'rule_id' => $object->getId()]);
+        $selectStore = $this->getConnection()->select()->from($tableStore)->where('rule_id=?', $object->getRuleId());
+        $checkRule = $this->getConnection()->fetchAll($selectStore);
+        if (!empty($checkRule)) {
+            foreach ($checkRule as $rule) {
+                if (isset($object['store_ids']) && is_array($object['store_ids'])) {
+                    foreach ($object['store_ids'] as $storeId) {
+                        if ($rule['store_id'] === $storeId) {
+                            $this->getConnection()->insertOnDuplicate($tableStore,
+                                ['store_id' => $storeId, 'rule_id' => $object->getId()]);
+                        }
+                        if ($rule['rule_id'] === $object['rule_id'] && $rule['store_id'] !== $storeId) {
+                            $this->getConnection()->delete($tableStore, ['store_id' => $storeId]);
+                        } else {
+                            $this->getConnection()->insertOnDuplicate($tableStore,
+                                ['store_id' => $storeId, 'rule_id' => $object->getId()]);
+                        }
+                    }
+                }
             }
         }
     }

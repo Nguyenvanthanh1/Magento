@@ -185,6 +185,16 @@ class Rule extends AbstractModel implements RuleInterface
         return $this->getData('use_range_date');
     }
 
+    public function setDiscountAmount($discountAmount)
+    {
+        return $this->getData('discount_amount', $discountAmount);
+    }
+
+    public function getDiscountAmount()
+    {
+        return $this->getData('discount_amount');
+    }
+
     /**
      * Initialize magento model.
      *
