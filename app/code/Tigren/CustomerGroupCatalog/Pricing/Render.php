@@ -24,7 +24,9 @@ class Render extends \Magento\Framework\Pricing\Render
         if (!$rendererPool) {
             throw new \RuntimeException('Wrong Price Rendering layout configuration. Factory block is missed');
         }
-
+        if ($saleableItem->getTypeId() === 'simple') {
+            $saleableItem->setPrice('24.00000');
+        }
         // obtain concrete Price Render
         $priceRender = $rendererPool->createPriceRender($priceCode, $saleableItem, $useArguments);
         return $priceRender->toHtml();

@@ -47,8 +47,7 @@ class AddToCart implements ObserverInterface
                 if ($validate && $totalValidate === 1) {
                     $discountRulePriority = $rule->getDiscountAmount();
                 }
-                if ($totalValidate > 1 && !empty($priority) && count($priority) > 1) {
-                    $rule = $rules->addFieldToFilter('priority', min($priority))->getFirstItem();
+                if ($validate && $totalValidate > 1 && !empty($priority) && count($priority) > 1 && $rule->getPriority() === min($priority)) {
                     $discountRulePriority = $rule->getDiscountAmount();
                 }
             }
@@ -58,7 +57,7 @@ class AddToCart implements ObserverInterface
             $quote->setOriginalCustomPrice($priceDiscount);
             $quote->getProduct()->setIsSuperMode(true);
         } catch (\Exception $e) {
-            return ;
+            return;
         }
     }
 }
