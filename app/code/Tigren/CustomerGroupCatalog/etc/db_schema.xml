@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="tigren_customer_group_catalog_rule" resource="default" engine="innodb" comment="Tigren Customer Group Catalog Rule Table">
@@ -12,14 +11,14 @@
                 comment="Rule ID" />
         <column xsi:type="varchar" name="name" nullable="false" length="200" comment="Name" />
         <column xsi:type="int" name="priority" nullable="true" comment="Priority" />
-        <column xsi:type="mediumtext" name="conditions_serialized" nullable="true" comment="Conditions Serialized"/>
+        <column xsi:type="mediumtext" name="conditions_serialized" nullable="true" comment="Conditions Serialized" />
         <column xsi:type="boolean" name="active" nullable="false" comment="Active" />
         <column xsi:type="timestamp" name="start_time" on_update="true" nullable="true" default="CURRENT_TIMESTAMP"
                 comment="Start Rule" />
         <column xsi:type="timestamp" name="end_time" on_update="true" nullable="true" default="CURRENT_TIMESTAMP"
                 comment="End Rule" />
         <column xsi:type="decimal" name="discount_amount" scale="6" precision="20" unsigned="false" nullable="false"
-                default="0" comment="Discount Amount"/>
+                default="0" comment="Discount Amount" />
         <column xsi:type="boolean" name="use_range_date" nullable="false" comment="Use Range Date" />
         <column xsi:type="timestamp" name="create_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Created At Of Rule" />
@@ -33,15 +32,15 @@
         <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false"
                 comment="Store ID" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="rule_id"/>
-            <column name="store_id"/>
+            <column name="rule_id" />
+            <column name="store_id" />
         </constraint>
         <constraint xsi:type="foreign" referenceId="CATALOGRULE_STORE_RULE_ID_TIGREN_CATALOGRULE_RULE_ID"
                     table="tigren_customer_group_catalog_rule_store" column="rule_id" referenceTable="tigren_customer_group_catalog_rule"
-                    referenceColumn="rule_id" onDelete="CASCADE"/>
+                    referenceColumn="rule_id" onDelete="CASCADE" />
         <constraint xsi:type="foreign" referenceId="CATRULE_CSTR_GROUP_CSTR_STORE_ID_CSTR_STORE_CSTR_GROUP_ID"
                     table="tigren_customer_group_catalog_rule_store" column="store_id" referenceTable="store"
-                    referenceColumn="store_id" onDelete="CASCADE"/>
+                    referenceColumn="store_id" onDelete="CASCADE" />
     </table>
     <table name="tigren_customer_group_catalog_rule_group" resource="default" engine="innodb" comment="Tigren Customer Group Catalog Rule Group Table">
         <column xsi:type="int" name="rule_id" unsigned="true" nullable="false" identity="false"
@@ -49,14 +48,14 @@
         <column xsi:type="int" name="customer_group_id" unsigned="true" nullable="false" identity="false"
                 comment="Customer Group ID" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
-            <column name="rule_id"/>
-            <column name="customer_group_id"/>
+            <column name="rule_id" />
+            <column name="customer_group_id" />
         </constraint>
         <constraint xsi:type="foreign" referenceId="CATALOGRULE_CUSTOMER_GROUP_RULE_ID_TIGREN_CATALOGRULE_RULE_ID"
                     table="tigren_customer_group_catalog_rule_group" column="rule_id" referenceTable="tigren_customer_group_catalog_rule"
-                    referenceColumn="rule_id" onDelete="CASCADE"/>
+                    referenceColumn="rule_id" onDelete="CASCADE" />
         <constraint xsi:type="foreign" referenceId="CATRULE_CSTR_GROUP_CSTR_GROUP_ID_CSTR_GROUP_CSTR_GROUP_ID"
                     table="tigren_customer_group_catalog_rule_group" column="customer_group_id" referenceTable="customer_group"
-                    referenceColumn="customer_group_id" onDelete="CASCADE"/>
+                    referenceColumn="customer_group_id" onDelete="CASCADE" />
     </table>
 </schema>

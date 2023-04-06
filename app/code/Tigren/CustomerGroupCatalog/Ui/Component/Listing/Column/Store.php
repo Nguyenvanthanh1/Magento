@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\CustomerGroupCatalog\Ui\Component\Listing\Column;
 
@@ -9,16 +14,42 @@ use Magento\Store\Model\System\Store as SystemStore;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
+/**
+ * Class Store
+ * @package Tigren\CustomerGroupCatalog\Ui\Component\Listing\Column
+ */
 class Store extends Column
 {
+    /**
+     * @var RuleFactory
+     */
     protected $ruleFactory;
 
+    /**
+     * @var Escaper
+     */
     protected $escaper;
 
+    /**
+     * @var SystemStore
+     */
     protected $systemStore;
 
+    /**
+     * @var mixed|string
+     */
     protected $storeKey;
 
+    /**
+     * @param RuleFactory $ruleFactory
+     * @param Escaper $escaper
+     * @param SystemStore $systemStore
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param $storeKey
+     * @param array $components
+     * @param array $data
+     */
     public function __construct(
         RuleFactory $ruleFactory,
         Escaper $escaper,
@@ -36,6 +67,10 @@ class Store extends Column
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
+    /**
+     * @param array $dataSource
+     * @return array
+     */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
@@ -46,6 +81,10 @@ class Store extends Column
         return $dataSource;
     }
 
+    /**
+     * @param array $item
+     * @return \Magento\Framework\Phrase|string
+     */
     protected function prepareItem(array $item)
     {
         $content = '';

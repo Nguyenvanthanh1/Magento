@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule;
 
@@ -10,10 +15,26 @@ use Magento\Framework\Registry;
 use Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
+/**
+ * Class Save
+ * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
+ */
 class Save extends \Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule\Rule implements HttpPostActionInterface
 {
+    /**
+     * @var DataPersistorInterface
+     */
     protected $dataPersistor;
 
+    /**
+     * @param DataPersistorInterface $dataPersistor
+     * @param RuleFactory $ruleFactory
+     * @param Registry $coreRegistry
+     * @param RuleRepositoryInterface $ruleRepository
+     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+     * @param \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter
+     * @param Context $context
+     */
     public function __construct(
         DataPersistorInterface $dataPersistor,
         RuleFactory $ruleFactory,
@@ -27,6 +48,9 @@ class Save extends \Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule\Rule i
         parent::__construct($ruleFactory, $coreRegistry, $ruleRepository, $fileFactory, $dateFilter, $context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $data = $this->getRequest()->getParams();

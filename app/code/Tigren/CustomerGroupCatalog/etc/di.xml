@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <virtualType name="TigrenCatalogFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
         <arguments>
@@ -30,12 +36,12 @@
     <preference for="Tigren\CustomerGroupCatalog\Api\Data\RuleInterface" type="Tigren\CustomerGroupCatalog\Model\Rule" />
     <preference for="Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface" type="Tigren\CustomerGroupCatalog\Model\RuleRepository" />
     <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
-        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HidePrice"/>
+        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HidePrice" />
     </type>
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HideAddToCart"/>
+        <plugin name="hide_price" type="Tigren\CustomerGroupCatalog\Plugin\HideAddToCart" />
     </type>
-     <type name="Magento\CatalogWidget\Block\Product\ProductsList">
-        <plugin name="add_price_discount" type="Tigren\CustomerGroupCatalog\Plugin\AddPriceDiscount"/>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="add_price_discount" type="Tigren\CustomerGroupCatalog\Plugin\AddPriceDiscount" />
     </type>
 </config>

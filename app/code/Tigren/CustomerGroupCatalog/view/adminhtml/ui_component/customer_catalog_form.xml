@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
@@ -42,7 +41,7 @@
             </item>
         </argument>
         <settings>
-            <submitUrl path="*/*/save"/>
+            <submitUrl path="*/*/save" />
         </settings>
         <dataProvider class="Tigren\CustomerGroupCatalog\Model\Rule\DataProvider" name="customer_catalog_form_data_source">
             <settings>
@@ -52,46 +51,46 @@
         </dataProvider>
     </dataSource>
     <fieldset name="customer_group_catalog_fieldset" sortOrder="5">
-    <settings>
-        <collapsible>false</collapsible>
-        <label/>
-    </settings>
-    <field name="rule_id" formElement="hidden">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="source" xsi:type="string">catalog</item>
-            </item>
-        </argument>
         <settings>
-            <dataType>text</dataType>
+            <collapsible>false</collapsible>
+            <label />
         </settings>
-    </field>
-    <field name="active" sortOrder="10" formElement="checkbox">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="source" xsi:type="string">catalog</item>
-                <item name="default" xsi:type="number">1</item>
-            </item>
-        </argument>
-        <settings>
-            <validation>
-                <rule name="required-entry" xsi:type="boolean">false</rule>
-            </validation>
-            <dataType>boolean</dataType>
-            <label translate="true">Active</label>
-        </settings>
-        <formElements>
-            <checkbox>
-                <settings>
-                    <valueMap>
-                        <map name="false" xsi:type="string">0</map>
-                        <map name="true" xsi:type="string">1</map>
-                    </valueMap>
-                    <prefer>toggle</prefer>
-                </settings>
-            </checkbox>
-        </formElements>
-    </field>
+        <field name="rule_id" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">catalog</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">catalog</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
         <field name="name" sortOrder="20" formElement="input">
             <settings>
                 <dataType>string</dataType>
@@ -127,7 +126,7 @@
             <formElements>
                 <multiselect>
                     <settings>
-                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider"/>
+                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider" />
                     </settings>
                 </multiselect>
             </formElements>
@@ -148,91 +147,91 @@
                 </item>
             </argument>
         </field>
-    <fieldset name="product_conditions" >
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Products Conditions</item>
-                <item name="sortOrder" xsi:type="number">60</item>
-            </item>
-        </argument>
-        <settings>
-            <label translate="true">Settings</label>
-            <additionalClasses>
-                <class name="product_condition">true</class>
-            </additionalClasses>
-            <imports>
-                <link name="visible">${ $.provider }:data.hide-export</link>
-            </imports>
-        </settings>
-        <container name="conditions_apply_to">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string">false</item>
-                <item name="sortOrder" xsi:type="number">25</item>
-            </item>
-        </argument>
-            <htmlContent name="html_content">
-                <block class="Tigren\CustomerGroupCatalog\Block\Adminhtml\Tab\ProductCondition" name="conditions_apply_to"/>
-            </htmlContent>
-        </container>
-    </fieldset>
+        <fieldset name="product_conditions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Products Conditions</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Settings</label>
+                <additionalClasses>
+                    <class name="product_condition">true</class>
+                </additionalClasses>
+                <imports>
+                    <link name="visible">${ $.provider }:data.hide-export</link>
+                </imports>
+            </settings>
+            <container name="conditions_apply_to">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string">false</item>
+                        <item name="sortOrder" xsi:type="number">25</item>
+                    </item>
+                </argument>
+                <htmlContent name="html_content">
+                    <block class="Tigren\CustomerGroupCatalog\Block\Adminhtml\Tab\ProductCondition" name="conditions_apply_to" />
+                </htmlContent>
+            </container>
+        </fieldset>
         <field name="use_range_date" sortOrder="200" formElement="checkbox">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="source" xsi:type="string">catalog</item>
-                <item name="default" xsi:type="number">0</item>
-                <item name="switcherConfig" xsi:type="array">
-                    <item name="enabled" xsi:type="boolean">true</item>
-                    <item name="rules" xsi:type="array">
-                        <item name="0" xsi:type="array">
-                            <item name="value" xsi:type="number">0</item>
-                            <item name="actions" xsi:type="array">
-                                <item name="0" xsi:type="array">
-                                    <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.start_time</item>
-                                    <item name="callback" xsi:type="string">hide</item>
-                                </item>
-                                <item name="1" xsi:type="array">
-                                    <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.end_time</item>
-                                    <item name="callback" xsi:type="string">hide</item>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">catalog</item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="number">0</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.start_time</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.end_time</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
                                 </item>
                             </item>
-                        </item>
-                        <item name="1" xsi:type="array">
-                            <item name="value" xsi:type="number">1</item>
-                            <item name="actions" xsi:type="array">
-                                <item name="0" xsi:type="array">
-                                    <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.start_time</item>
-                                    <item name="callback" xsi:type="string">show</item>
-                                </item>
-                                <item name="1" xsi:type="array">
-                                    <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.end_time</item>
-                                    <item name="callback" xsi:type="string">show</item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="number">1</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.start_time</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">customer_catalog_form.customer_catalog_form.customer_group_catalog_fieldset.end_time</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
                                 </item>
                             </item>
                         </item>
                     </item>
                 </item>
-            </item>
-        </argument>
-        <settings>
-            <validation>
-                <rule name="required-entry" xsi:type="boolean">false</rule>
-            </validation>
-            <dataType>boolean</dataType>
-            <label translate="true">Use Range Date</label>
-        </settings>
-        <formElements>
-            <checkbox>
-                <settings>
-                    <valueMap>
-                        <map name="false" xsi:type="string">0</map>
-                        <map name="true" xsi:type="string">1</map>
-                    </valueMap>
-                    <prefer>toggle</prefer>
-                </settings>
-            </checkbox>
-        </formElements>
-    </field>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Use Range Date</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
 
         <field name="start_time" formElement="date">
             <argument name="data" xsi:type="array">

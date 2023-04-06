@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\CustomerGroupCatalog\Model\ResourceModel;
 
@@ -17,9 +22,21 @@ class Rule extends AbstractDb
      * @var string
      */
     protected $_eventPrefix = 'tigren_customer_group_catalog_rule_resource_model';
+    /**
+     * @var TypeListInterface
+     */
     protected $cacheTypeList;
+    /**
+     * @var Pool
+     */
     protected $cacheFrontendPool;
 
+    /**
+     * @param TypeListInterface $cacheTypeList
+     * @param Pool $cacheFrontendPool
+     * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
+     * @param $connectionName
+     */
     public function __construct(
         TypeListInterface $cacheTypeList,
         Pool $cacheFrontendPool,
@@ -45,13 +62,6 @@ class Rule extends AbstractDb
         return $this->filterData($this->getConnection()->fetchAll($result));
     }
 
-    public function flushCache()
-    {
-            $this->cacheTypeList->cleanType('layout');
-        foreach ($this->cacheFrontendPool as $cacheFrontend) {
-            $cacheFrontend->getBackend()->clean();
-        }
-    }
     /**
      * @param $data
      * @return array
@@ -94,6 +104,17 @@ class Rule extends AbstractDb
         $this->addGroupData($object);
         $this->addStoreData($object);
         return parent::_afterSave($object);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushCache()
+    {
+        $this->cacheTypeList->cleanType('layout');
+        foreach ($this->cacheFrontendPool as $cacheFrontend) {
+            $cacheFrontend->getBackend()->clean();
+        }
     }
 
     /**

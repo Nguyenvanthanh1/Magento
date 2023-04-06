@@ -7,11 +7,8 @@
 
 namespace Tigren\CustomerGroupCatalog\Block\Adminhtml\Tab;
 
-use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
-use Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\FormFactory;
-use Magento\SalesRule\Model\Rule;
+use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
 
 class ProductCondition extends \Magento\Backend\Block\Widget\Form\Generic implements
     \Magento\Ui\Component\Layout\Tabs\TabInterface
@@ -150,9 +147,9 @@ class ProductCondition extends \Magento\Backend\Block\Widget\Form\Generic implem
             'conditions',
             'text',
             [
-                'name'     => 'product_conditions',
-                'label'    => __('Product Conditions'),
-                'title'    => __('Product Conditions'),
+                'name' => 'product_conditions',
+                'label' => __('Product Conditions'),
+                'title' => __('Product Conditions'),
                 'required' => true,
                 'data-form-part' => $formName
             ]

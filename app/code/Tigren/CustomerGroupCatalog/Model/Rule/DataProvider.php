@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\CustomerGroupCatalog\Model\Rule;
 
@@ -7,6 +12,10 @@ use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\Collection;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\Rule\CollectionFactory;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
 
+/**
+ * Class DataProvider
+ * @package Tigren\CustomerGroupCatalog\Model\Rule
+ */
 class DataProvider extends AbstractDataProvider
 {
     /**
@@ -15,8 +24,20 @@ class DataProvider extends AbstractDataProvider
      */
     protected $loaderData;
 
+    /**
+     * @var RuleFactory
+     */
     protected $ruleFactory;
 
+    /**
+     * @param CollectionFactory $collectionRule
+     * @param RuleFactory $ruleFactory
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         CollectionFactory $collectionRule,
         RuleFactory $ruleFactory,
@@ -31,6 +52,9 @@ class DataProvider extends AbstractDataProvider
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
+    /**
+     * @return array
+     */
     public function getData()
     {
         if ($this->loaderData !== null) {

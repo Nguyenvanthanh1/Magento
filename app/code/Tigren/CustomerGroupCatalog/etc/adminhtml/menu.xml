@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
+<!--
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
+
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tigren_CustomerGroupCatalog::listing" title="Tigren" sortOrder="300" module="Tigren_CustomerGroupCatalog" resource="Tigren_CustomerGroupCatalog::listing"/>
-        <add id="Tigren_CustomerGroupCatalog::index" title="Tigren Customer Group Catalog" module="Tigren_CustomerGroupCatalog" sortOrder="999" action="customer_catalog/rule" resource="Tigren_CustomerGroupCatalog::index" parent="Tigren_CustomerGroupCatalog::listing"/>
+        <add id="Tigren_CustomerGroupCatalog::listing" title="Tigren" sortOrder="300" module="Tigren_CustomerGroupCatalog" resource="Tigren_CustomerGroupCatalog::listing" />
+        <add id="Tigren_CustomerGroupCatalog::index" title="Tigren Customer Group Catalog" module="Tigren_CustomerGroupCatalog" sortOrder="999" action="customer_catalog/rule" resource="Tigren_CustomerGroupCatalog::index" parent="Tigren_CustomerGroupCatalog::listing" />
     </menu>
 </config>

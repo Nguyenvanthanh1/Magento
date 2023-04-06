@@ -1,4 +1,9 @@
 <?php
+/*
+ * @author  Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license  Open Software License (“OSL”) v. 3.0
+ */
 
 namespace Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule;
 
@@ -7,8 +12,21 @@ use Magento\Framework\Registry;
 use Tigren\CustomerGroupCatalog\Api\RuleRepositoryInterface;
 use Tigren\CustomerGroupCatalog\Controller\RegistryConstants;
 use Tigren\CustomerGroupCatalog\Model\RuleFactory;
+
+/**
+ * Class Edit
+ * @package Tigren\CustomerGroupCatalog\Controller\Adminhtml\Rule
+ */
 class Edit extends Rule
 {
+    /**
+     * @param RuleFactory $ruleFactory
+     * @param Registry $coreRegistry
+     * @param RuleRepositoryInterface $ruleRepository
+     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+     * @param \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter
+     * @param Context $context
+     */
     public function __construct(
         RuleFactory $ruleFactory,
         Registry $coreRegistry,
@@ -20,6 +38,9 @@ class Edit extends Rule
         parent::__construct($ruleFactory, $coreRegistry, $ruleRepository, $fileFactory, $dateFilter, $context);
     }
 
+    /**
+     * @return void
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
