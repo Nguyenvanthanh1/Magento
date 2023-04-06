@@ -2,6 +2,8 @@
 
 namespace Tigren\CustomerGroupCatalog\Model\ResourceModel;
 
+use Magento\Framework\App\Cache\Frontend\Pool;
+use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
@@ -15,6 +17,19 @@ class Rule extends AbstractDb
      * @var string
      */
     protected $_eventPrefix = 'tigren_customer_group_catalog_rule_resource_model';
+    protected $cacheTypeList;
+    protected $cacheFrontendPool;
+
+    public function __construct(
+        TypeListInterface $cacheTypeList,
+        Pool $cacheFrontendPool,
+        \Magento\Framework\Model\ResourceModel\Db\Context $context,
+        $connectionName = null
+    ) {
+        $this->cacheTypeList = $cacheTypeList;
+        $this->cacheFrontendPool = $cacheFrontendPool;
+        parent::__construct($context, $connectionName);
+    }
 
     /**
      * @param $ruleId
@@ -30,6 +45,13 @@ class Rule extends AbstractDb
         return $this->filterData($this->getConnection()->fetchAll($result));
     }
 
+    public function flushCache()
+    {
+            $this->cacheTypeList->cleanType('layout');
+        foreach ($this->cacheFrontendPool as $cacheFrontend) {
+            $cacheFrontend->getBackend()->clean();
+        }
+    }
     /**
      * @param $data
      * @return array
@@ -68,6 +90,7 @@ class Rule extends AbstractDb
      */
     protected function _afterSave(AbstractModel $object)
     {
+        $this->flushCache();
         $this->addGroupData($object);
         $this->addStoreData($object);
         return parent::_afterSave($object);
@@ -88,9 +111,9 @@ class Rule extends AbstractDb
         if (!empty($checkRule) && is_array($checkRule)) {
             foreach ($checkRule as $rule) {
                 if (!in_array(
-                    $rule['customer_group_id'],
-                    $object['customer_group_ids']
-                ) && isset($object['customer_group_ids']) && is_array($object['customer_group_ids']) && !empty($object['customer_group_ids'])) {
+                        $rule['customer_group_id'],
+                        $object['customer_group_ids']
+                    ) && isset($object['customer_group_ids']) && is_array($object['customer_group_ids']) && !empty($object['customer_group_ids'])) {
                     $connection->delete(
                         $tableGroup,
                         ['customer_group_id=?' => $rule['customer_group_id'], 'rule_id=?' => $object['rule_id']]
@@ -132,9 +155,9 @@ class Rule extends AbstractDb
         if (!empty($checkRule) && is_array($checkRule)) {
             foreach ($checkRule as $rule) {
                 if (!in_array(
-                    $rule['store_id'],
-                    $object['store_ids']
-                ) && isset($object['store_ids']) && is_array($object['store_ids']) && !empty($object['store_ids'])) {
+                        $rule['store_id'],
+                        $object['store_ids']
+                    ) && isset($object['store_ids']) && is_array($object['store_ids']) && !empty($object['store_ids'])) {
                     $this->getConnection()->delete(
                         $tableStore,
                         ['store_id=?' => $rule['store_id'], 'rule_id=?' => $object->getRuleId()]

@@ -1,12 +1,8 @@
 <?php
-// @codingStandardsIgnoreFile
-?>
-
-<?php
 /** @var \Magento\Catalog\Pricing\Render\FinalPriceBox $block */
 $priceHelper = $this->helper(\Tigren\CustomerGroupCatalog\Helper\Price::class);
 $productId = $block->getSaleableItem()->getId();
-//$currentProductId = $block->getRequest()->getParam('id');
+$currentProductId = $block->getRequest()->getParam('id');
 
 /** ex: \Magento\Catalog\Pricing\Price\RegularPrice */
 /** @var \Magento\Framework\Pricing\Price\PriceInterface $priceModel */
@@ -18,7 +14,7 @@ $finalPriceModel = $block->getPriceType('final_price');
 $idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
 $schema = ($block->getZone() == 'item_view') ? true : false;
 $rule = $priceHelper->getRuleMatch($block->getSaleableItem());
-//(float)$priceDiscount = $block->getSaleableItem()->getTypeId() === 'simple'? $block->getSaleableItem()->getPriceInfo()->getPrice('final_price')->getValue() / 100 * $rule->getDiscountAmount():'';
+(float)$priceDiscount = $block->getSaleableItem()->getTypeId() === 'simple' && !empty($rule) ? $block->getSaleableItem()->getPriceInfo()->getPrice('final_price')->getValue() / 100 * (float)$rule->getDiscountAmount() : '';
 ?>
 <?php if ($block->getSaleableItem()->getTypeId() === 'simple'): ?>
     <?php if ($block->hasSpecialPrice()): ?>
@@ -32,11 +28,12 @@ $rule = $priceHelper->getRuleMatch($block->getSaleableItem());
            'schema' => $schema
        ]); ?>
    </span>
-<!--    --><?php //else: ?>
-<!--        <span class="price" style="text-decoration:line-through;color:steelblue">$--><?php ///* @escapeNotVerified */
-//        echo $block->getSaleableItem()->getPriceInfo()->getPrice('final_price')->getValue() - $priceDiscount ?>
-<!--        </span>-->
-<!--        <b>Discount --><?php //= (int)$rule->getDiscountAmount() ?><!--%</b>-->
+    <?php else: ?>
+
+        <?php echo $priceDiscount ? '<span class="price" style="text-decoration:line-through;color:steelblue">$' .
+            $block->getSaleableItem()->getPriceInfo()->getPrice('final_price')->getValue() - $priceDiscount .
+            '</span>' : '' ?>
+        <?php echo !empty($rule) ? '<b>Discount' . (int)$rule->getDiscountAmount() . '%</b>' : '' ?>
     <?php endif; ?>
 
     <?php if ($block->showMinimalPrice()): ?>
