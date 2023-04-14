@@ -1,1 +1,0 @@
-/home/vanthanh/Work/htdocs/magento/vendor/magento/module-backend/view/adminhtml/web/js/dashboard/totals.js

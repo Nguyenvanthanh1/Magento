@@ -1,1 +1,0 @@
-/home/vanthanh/Work/htdocs/magento/lib/web/jquery/fileUploader/jquery.iframe-transport.js

@@ -1,1 +1,0 @@
-/home/vanthanh/Work/htdocs/magento/vendor/magento/module-review/view/adminhtml/web/js/rating.js

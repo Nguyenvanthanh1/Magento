@@ -1,1 +1,0 @@
-/home/vanthanh/Work/htdocs/magento/vendor/paypal/module-braintree-core/view/base/web/js/validator.js
