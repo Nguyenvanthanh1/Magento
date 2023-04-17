@@ -1,29 +1,2 @@
 <div id="modal">
-    <?php echo '1234' ?>
 </div>
-<button id="button">Show</button>
-<script type="text/javascript">
-    require([
-        "jquery",
-        "Magento_Ui/js/modal/modal"
-    ],function($, modal) {
-
-        var options = {
-            type: 'popup',
-            responsive: true,
-            title: 'Main title',
-            buttons: [{
-                text: $.mage.__('Ok'),
-                class: '',
-                click: function () {
-                    this.closeModal();
-                }
-            }]
-        };
-
-        var popup = modal(options, $('#modal'));
-        $("#button").click(function() {
-            $('#modal').modal('openModal');
-        });
-    });
-</script>
