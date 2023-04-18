@@ -19,7 +19,6 @@ define([
                         $('body').trigger('processStart');
                     },
                     success: function (response) {
-                        console.log(response.message);
                         if (response.message === 'hide') {
                             $('body').trigger('processStop');
                             self.ajaxSubmit(form);
@@ -32,10 +31,10 @@ define([
                                 title: 'Popup Check Allow Multiple',
                                 buttons: [
                                     {
-                                        text: $.mage.__('Close'),
+                                        text: $.mage.__('Proceed to Checkout'),
                                         class: '',
                                         click: function () {
-                                            this.closeModal();
+                                            location.assign(url.build('checkout'))
                                         }
                                     }, {
                                         text: $.mage.__('Clean Cart'),
@@ -51,17 +50,14 @@ define([
                                                 beforeSend: function () {
                                                     $('body').trigger('processStart');
                                                 },success:function (response){
-                                                    console.log(response);
                                                     if(response.message==='success'){
                                                         $('body').trigger('processStop');
-                                                        location.reload();
                                                         customerData.invalidate(sections)
+                                                        customerData.reload(sections,true);
                                                         self.closeModal();
                                                     }else{
                                                         alert('Can not delete quote')
                                                     }
-                                                },
-                                                complete: function () {
                                                 }
                                             })
                                         }

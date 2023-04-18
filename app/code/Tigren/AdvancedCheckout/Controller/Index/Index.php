@@ -40,7 +40,7 @@ class Index extends Action
             }
 
             $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-            $allCheckMultiple = $product->getCustomAttribute('is_allow_multiple') ? $product->getCustomAttribute('is_allow_multiple')->getValue() : '';
+            $allCheckMultiple = $product->getCustomAttribute('is_allow_multiple') ? $product->getCustomAttribute('is_allow_multiple')->getValue() : 0;
             if (!empty($productId) && !$allCheckMultiple && $checkProduct >= 1) {
                 $message['message'] = 'show';
             } else {
