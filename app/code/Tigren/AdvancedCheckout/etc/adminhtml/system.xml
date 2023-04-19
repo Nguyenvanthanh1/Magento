@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tigren" translate="label" sortOrder="300">
+            <label>Tigren</label>
+        </tab>
+        <section id="delivery" type="text" showInDefault="1" showInStore="1" showInWebsite="1" translate="label" sortOrder="200">
+            <label>Delivery Date</label>
+            <tab>tigren</tab>
+            <class>separator-top</class>
+            <resource>Tigren_AdvancedCheckout::config_delivery</resource>
+            <group id="general" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="status" translate="label" type="select" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="day_off" translate="label" type="multiselect" sortOrder="20" showInDefault="1" canRestore="1">
+                    <label>Day Off </label>
+                    <source_model>Magento\Config\Model\Config\Source\Locale\Weekdays</source_model>
+                </field>
+                <field id="date_off" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1">
+                    <label>Date Off</label>
+                    <frontend_model>Tigren\AdvancedCheckout\Block\Adminhtml\Config\Date</frontend_model>
+                    <backend_model>Tigren\AdvancedCheckout\Model\Source\DateOff</backend_model>
+                </field>
+                <field id="cutofftime" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cut off Time</label>
+                    <frontend_model>Tigren\AdvancedCheckout\Block\Adminhtml\Config\DeliveryDate</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
