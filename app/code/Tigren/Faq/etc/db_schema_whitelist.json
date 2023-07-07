@@ -1,0 +1,17 @@
+{
+    "tigren_faq_question": {
+        "column": {
+            "question_id": true,
+            "question": true,
+            "author": true,
+            "answer": true,
+            "product": true,
+            "position": true,
+            "create_at": true,
+            "is_active": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

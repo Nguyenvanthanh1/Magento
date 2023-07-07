@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tigren_faq_question" resource="default" engine="innodb">
+        <column xsi:type="int" name="question_id" nullable="false" identity="true" unsigned="false" comment="Question ID" />
+        <column xsi:type="text" name="question" nullable="true" comment="Question Content" />
+        <column xsi:type="varchar" name="author" nullable="true" length="100" comment="Author" />
+        <column xsi:type="text" name="answer" nullable="true" comment="Answer" />
+        <column xsi:type="int" name="product" nullable="true" comment="Product" />
+        <column xsi:type="int" name="position" nullable="true" comment="Position" />
+        <column xsi:type="timestamp" name="create_at" comment="Create At"/>
+        <column xsi:type="tinyint" name="is_active" comment="Is Active" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="question_id"/>
+        </constraint>
+    </table>
+    
+</schema>

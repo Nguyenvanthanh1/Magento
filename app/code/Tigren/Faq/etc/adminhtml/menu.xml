@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+  ~ @author  Tigren Solutions <info@tigren.com>
+  ~ @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+  ~ @license  Open Software License (“OSL”) v. 3.0
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren_Faq::core" title="Tigren" module="Tigren_Faq" sortOrder="20" resource="Tigren_Faq::core"/>
+        <add id="Tigren_Faq::list" title="Question Faq" module="Tigren_Faq" sortOrder="10" parent="Tigren_Faq::core" action="tigren_faq/question/index" resource="Tigren_Faq::core"/>
+    </menu>
+</config>
